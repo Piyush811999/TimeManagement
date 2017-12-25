@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_timeTable"
+        android:icon="?android:attr/actionModePasteDrawable"
+        android:title="@string/timeTable" />
+
+    <item
+        android:id="@+id/navigation_weeklyAnalysis"
+        android:icon="?android:attr/actionModeSelectAllDrawable"
+        android:title="@string/today" />
+    <item
+        android:id="@+id/navigation_today"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/Weekly_data" />
+
+    <item
+        android:id="@+id/navigation_dailyLog"
+        android:icon="?android:attr/actionModeFindDrawable"
+        android:title="@string/daily_data" />
+    <item
+        android:id="@+id/navigation_goals"
+        android:icon="?android:attr/listChoiceIndicatorSingle"
+        android:title="@string/goals" />
+
+</menu>
