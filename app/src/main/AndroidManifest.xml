@@ -18,10 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Analysis.AnalysisActivity"></activity>
-        <activity android:name=".Goals.GoalsActivity"></activity>
-        <activity android:name=".DailyLog.LogActivity"></activity>
-        <activity android:name=".TodayView.TodayActivity"></activity>
+        <activity android:name=".Analysis.AnalysisActivity" />
+        <activity android:name=".Goals.GoalsActivity" />
+        <activity android:name=".DailyLog.LogActivity" />
+        <activity android:name=".TodayView.TodayActivity" />
+        <activity android:name=".Main2Activity"></activity>
     </application>
 
 </manifest>

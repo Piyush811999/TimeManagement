@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
 
-        
+
         <RelativeLayout
             android:elevation="1dp"
             android:layout_width="match_parent"
@@ -28,12 +28,40 @@
             android:layout_height="wrap_content"
             android:id="@+id/relLayout2"
             android:layout_below="@+id/relLayout1">
-            <include layout="@layout/layout_middle_timetable"></include>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:elevation="10dp"
+                android:id="@+id/listDays"
+                android:layout_width="367dp"
+                android:layout_height="455dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+
+
+                tools:layout_editor_absoluteX="9dp"
+                tools:layout_editor_absoluteY="8dp" />
+            <!--<include layout="@layout/layout_middle_timetable"/>-->
 
 
         </RelativeLayout>
 
-<include layout="@layout/layout_bottomnavigation"/>
+<!--<include layout="@layout/layout_bottomnavigation"/>-->
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemBackground="@color/colorPrimaryDark"
+            app:itemTextColor="#000000"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/navigation"
+            android:layout_alignParentBottom="true"/>
 
 
     </RelativeLayout>
