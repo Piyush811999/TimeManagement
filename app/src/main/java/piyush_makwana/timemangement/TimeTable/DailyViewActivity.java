@@ -1,5 +1,6 @@
 package piyush_makwana.timemangement.TimeTable;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -34,6 +35,8 @@ public class DailyViewActivity extends AppCompatActivity{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(DailyViewActivity.this,PopupAddActivity.class);
+                startActivity(intent);
 
             }
         });

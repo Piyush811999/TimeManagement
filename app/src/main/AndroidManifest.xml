@@ -24,6 +24,7 @@
         <activity android:name=".TodayView.TodayActivity" />
         <activity android:name=".TimeTable.DailyViewActivity"/>
         <activity android:name=".Goals.SubTasksActivity"/>
+        <activity android:name=".TimeTable.PopupAddActivity"/>
     </application>
 
 </manifest>

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_light">
 
     <android.support.v7.widget.CardView
+        android:background="@color/grey_light"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
 
         <RelativeLayout
+            android:background="@color/colorPrimary"
             android:padding="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="150dp">
 
             <TextView
+
             android:id="@+id/titlepopup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,19 +26,186 @@
             android:text="ADD WEEKLY ACTIVITY"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#fff"
             />
 
-            <EditText
-                android:layout_width="wrap_content"
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <ImageButton
+                    android:scaleY="1.5"
+                    android:scaleX="1.5"
+                    android:padding="10dp"
+                    android:id="@+id/cancel_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/cardview_shadow_end_color"
+                    app:srcCompat="@drawable/ic_cancel_black_24dp" />
+                <RelativeLayout
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+
+
                 android:id="@+id/activityName"
-                android:layout_below="@id/titlepopup"
-                android:hint="Enter Activity Name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+
                 android:layout_centerHorizontal="true"
-                />
+                android:hint="Enter Activity Name" />
+                </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/add_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/cardview_shadow_end_color"
+                    android:padding="10dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    app:srcCompat="@drawable/ic_check_circle_black_24dp" />
+            </LinearLayout>
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_marginTop="150dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical">
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+
+                        android:layout_margin="10dp"
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+              <TextView
+                  android:textStyle="bold"
+                  android:layout_marginVertical="13dp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Timing"
+                  />
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingHorizontal="60dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="From"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:id="@+id/timeFrom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2:00 PM"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="to"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:id="@+id/timeTo"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3:00 PM"
+                            android:padding="10dp"/>
+
+
+
+                    </LinearLayout>
+                <LinearLayout
+
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/ic_add_location_black_24dp" />
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="13dp"
+                        android:text="Location"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+               <EditText
+                   android:id="@+id/activityVenue"
+                   android:textSize="14dp"
+                   android:layout_centerHorizontal="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:width="250dp"
+                   android:hint="Add Venue (Ex: LHC 002)"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="250dp"
+            android:background="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="365dp"
+            android:background="@color/colorPrimary"/>
+        <!--<View-->
+            <!--android:layout_marginVertical="250dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
+        <!--<View-->
+            <!--android:layout_marginVertical="370dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
 
     </android.support.v7.widget.CardView>
     
