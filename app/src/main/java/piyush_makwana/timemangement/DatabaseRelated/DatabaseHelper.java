@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import piyush_makwana.timemangement.Goals.SubTask;
+import piyush_makwana.timemangement.Goals.Task;
+
 /**
  * Created by HP on 26-12-2017.
  */
@@ -21,11 +24,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String CREATE_TABLE = "CREATE TABLE " + Task.TaskEntry.TABLE  + " ( " + Task.TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Task.TaskEntry.COL_TASK_TITLE + " TEXT NOT NULL);";
+        db.execSQL(CREATE_TABLE);
+        String CREATE_SUB_TABLE ="CREATE TABLE " + SubTask.SubTaskEntry.TABLE + " ( " + SubTask.SubTaskEntry._ID +  " INTEGER PRIMARY KEY AUTOINCREMENT, " + SubTask.SubTaskEntry.COL_TASK_TITLE +" TEXT NOT NULL, " + SubTask.SubTaskEntry.COL_GOAL_TITLE + " TEXT NOT NULL);";
+        db.execSQL(CREATE_SUB_TABLE);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + Task.TaskEntry.TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SubTask.SubTaskEntry.TABLE);
+        onCreate(db);
 
     }
 }

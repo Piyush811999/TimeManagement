@@ -22,7 +22,7 @@
                         android:text="Time-Table"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        android:textColor="#fff"/>
+                        android:textColor="#eee"/>
 
 
 

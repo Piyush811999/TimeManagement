@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <RelativeLayout
+            android:padding="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+            android:id="@+id/titlepopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="ADD WEEKLY ACTIVITY"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/activityName"
+                android:layout_below="@id/titlepopup"
+                android:hint="Enter Activity Name"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    
+
+
+
+</LinearLayout>

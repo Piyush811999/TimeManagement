@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_sub_add"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/ic_add_black_24dp"
         android:orderInCategory="100"
         android:title="@string/infoTimeTable"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 
 </menu>

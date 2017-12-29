@@ -1,6 +1,8 @@
 package piyush_makwana.timemangement.TimeTable;
 
+import android.app.LauncherActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +52,7 @@ public class RecyclerAdapterDaysTimeTable extends RecyclerView.Adapter<RecyclerA
         return dayItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView day;
         public TextView freeHourCount;
         public TextView activityCount;
@@ -58,11 +60,24 @@ public class RecyclerAdapterDaysTimeTable extends RecyclerView.Adapter<RecyclerA
         public ViewHolder(View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
+
             day = (TextView) itemView.findViewById(R.id.day);
             freeHourCount = (TextView) itemView.findViewById(R.id.freehoursCount);
             activityCount = (TextView) itemView.findViewById(R.id.numberOfActivity);
 
 
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            DayItems items = dayItems.get(position);
+
+            Intent intent = new Intent(context,DailyViewActivity.class);
+            intent.putExtra("day",items.getDay());
+            context.startActivity(intent);
 
         }
     }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="5dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginVertical="10dp">
+
+        <TextView
+
+            android:layout_marginBottom="5dp"
+            android:id="@+id/title_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:layout_centerVertical="true"
+            android:paddingHorizontal="40dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
+        </RelativeLayout>
+
+        <!--
+        <Button
+            android:id="@+id/delete_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/action_delete"
+            android:onClick="deleteTask"
+            />-->
+
+        <!--   <ProgressBar
+
+
+            android:paddingVertical="1dp"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"/>-->
+
+        <ImageButton
+            android:id="@+id/delete_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@color/cardview_shadow_end_color"
+            android:onClick="deleteTask"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_delete_forever_black_24dp" />
+
+        <RelativeLayout
+            android:id="@+id/laypro"
+            android:layout_width="100dp"
+            android:layout_height="85dp">
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/testProgress"
+
+
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+               android:layout_marginVertical="1dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="18dp"
+                app:cpb_background_progressbar_color="@color/grey_light"
+                app:cpb_background_progressbar_width="5dp"
+                app:cpb_progressbar_color="@color/colorPrimaryDark"
+                app:cpb_progressbar_width="10dp"
+                />
+
+        </RelativeLayout>
+        <!-- <CheckBox
+             android:id="@+id/check_task"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_gravity="start"
+             android:padding="15dp"/>-->
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

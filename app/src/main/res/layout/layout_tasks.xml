@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="piyush_makwana.timemangement.TimeTable.MainActivity">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Goals.GoalsActivity"
+    >
     <RelativeLayout
         android:background="@color/grey_light"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relLayout1">
 
-            <include layout="@layout/layout_top"/>
+            <include layout="@layout/layout_top_goals"/>
 
         </RelativeLayout>
 
@@ -33,22 +33,19 @@
 
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_todo"
                 android:elevation="10dp"
-                android:id="@+id/listDays"
-                android:layout_width="367dp"
+
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-
-
-                tools:layout_editor_absoluteX="9dp"
-                tools:layout_editor_absoluteY="8dp" />
+                android:layout_centerHorizontal="true" />
             <!--<include layout="@layout/layout_middle_timetable"/>-->
 
 
         </RelativeLayout>
 
-<!--<include layout="@layout/layout_bottomnavigation"/>-->
+        <!--<include layout="@layout/layout_bottomnavigation"/>-->
         <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 
             android:id="@+id/navigation"
@@ -67,7 +64,6 @@
 
 
     </RelativeLayout>
-
 
 
 

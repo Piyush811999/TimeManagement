@@ -22,7 +22,8 @@
         <activity android:name=".Goals.GoalsActivity" />
         <activity android:name=".DailyLog.LogActivity" />
         <activity android:name=".TodayView.TodayActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".TimeTable.DailyViewActivity"/>
+        <activity android:name=".Goals.SubTasksActivity"/>
     </application>
 
 </manifest>
