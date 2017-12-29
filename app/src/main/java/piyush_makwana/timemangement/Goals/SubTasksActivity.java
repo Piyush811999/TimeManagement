@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -39,6 +40,7 @@ public class SubTasksActivity extends AppCompatActivity {
     private Bundle extras;
     private  RecyclerView mSubTaskListView;
     private List<SubListItems> sublistItems;
+    private TextView goal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,8 +54,26 @@ public class SubTasksActivity extends AppCompatActivity {
             GoalName = extras.getString("task");
         }
 
+        goal = findViewById(R.id.goalName);
 
-        mSubTaskListView = findViewById(R.id.Sub_list_todo);
+
+
+
+
+
+        extras= getIntent().getExtras();
+
+        if (extras != null){
+            goal.setText(extras.getString("task"));
+        }
+
+
+
+
+
+
+
+    mSubTaskListView = findViewById(R.id.Sub_list_todo);
         mSubTaskListView.setHasFixedSize(true);
         mSubTaskListView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -39,6 +39,7 @@
             app:menu="@menu/navigation" />
 
         <android.support.v7.widget.RecyclerView
+            android:paddingTop="5dp"
             android:layout_below="@+id/viewA"
             android:layout_above="@id/navigation"
             android:layout_width="match_parent"
