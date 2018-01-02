@@ -8,11 +8,11 @@
         android:title="@string/timeTable" />
 
     <item
-        android:id="@+id/navigation_weeklyAnalysis"
+        android:id="@+id/navigation_today"
         android:icon="?android:attr/actionModeSelectAllDrawable"
         android:title="@string/today" />
     <item
-        android:id="@+id/navigation_today"
+        android:id="@+id/navigation_weeklyAnalysis"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/Weekly_data" />
 

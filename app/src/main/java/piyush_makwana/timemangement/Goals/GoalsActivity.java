@@ -128,6 +128,7 @@ public class GoalsActivity extends AppCompatActivity {
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(4);
         menuItem.setChecked(true);
+        overridePendingTransition(0,0);
     }
 
     @Override

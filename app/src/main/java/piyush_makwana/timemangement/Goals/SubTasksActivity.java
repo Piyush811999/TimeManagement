@@ -15,6 +15,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -41,6 +43,7 @@ public class SubTasksActivity extends AppCompatActivity {
     private  RecyclerView mSubTaskListView;
     private List<SubListItems> sublistItems;
     private TextView goal;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,11 +71,6 @@ public class SubTasksActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
     mSubTaskListView = findViewById(R.id.Sub_list_todo);
         mSubTaskListView.setHasFixedSize(true);
         mSubTaskListView.setLayoutManager(new LinearLayoutManager(this));
@@ -87,10 +85,10 @@ public class SubTasksActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final EditText subtaskText = new EditText(SubTasksActivity.this);
                 AlertDialog dialog = new AlertDialog.Builder(SubTasksActivity.this)
-                        .setTitle("New Task")
-                        .setMessage("Add a new task")
+                        .setTitle("Add Sub-Task")
+                        .setMessage("Add a new sub-task")
                         .setView(subtaskText)
-                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String subtask = String.valueOf(subtaskText.getText());
@@ -104,7 +102,7 @@ public class SubTasksActivity extends AppCompatActivity {
 
                             }
                         })
-                        .setNegativeButton("Cancel",null)
+                        .setNegativeButton("CANCEL",null)
                         .create();
                 dialog.show();
 
