@@ -3,6 +3,7 @@ package piyush_makwana.timemangement.TodayView;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,6 +40,7 @@ public class TodayActivity extends AppCompatActivity {
     private ImageButton minusProductive;
     private ImageButton plusSocial;
     private ImageButton minusSocial;
+    private TextView freeHours;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class TodayActivity extends AppCompatActivity {
         minusProductive = findViewById(R.id.minusProuctiveTime);
         plusSocial = findViewById(R.id.plusSocialTime);
         minusSocial = findViewById(R.id.minusSocialTime);
+        freeHours = findViewById(R.id.freeHourView);
 
 
         date = findViewById(R.id.date);
@@ -69,24 +72,54 @@ public class TodayActivity extends AppCompatActivity {
 
         date.setText(formatedDate);
         day.setText(dayName(day1));
+        freeHours.setText(String.valueOf((double)(1440-BusyMinutes(dayName(day1)))/60));
+
 
         if (!CheckIfDataAlreadyInDBorNot(dayInfo.TABLE_NAME,dayInfo.dayInfoEntery.COL_date,formatedDate)){
             SQLiteDatabase db = mHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(dayInfo.dayInfoEntery.COL_date,formatedDate);
-            values.put(dayInfo.dayInfoEntery.COL_freetime,(1440-BusyHours(dayName(day1))));
+            values.put(dayInfo.dayInfoEntery.COL_freetime,1440-BusyMinutes(dayName(day1)));
             values.put(dayInfo.dayInfoEntery.COL_productiveTime,0);
             values.put(dayInfo.dayInfoEntery.COL_socialTime,0);
             db.insert(dayInfo.TABLE_NAME,null,values);
-            productiveHours.setText(0);
-            socialHours.setText(0);
+            productiveHours.setText("0");
+            socialHours.setText("0");
         }
+
+        //update UI
+        SQLiteDatabase db = mHelper.getReadableDatabase();
+        Cursor cursor = db.query(dayInfo.TABLE_NAME, new String[]{dayInfo.dayInfoEntery.COL_productiveTime}, dayInfo.dayInfoEntery.COL_date + "=" + sant(formatedDate), null, null, null, null);
+        while (cursor.moveToNext()) {
+            int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_productiveTime);
+
+            int minute = cursor.getInt(index);
+            cursor.close();
+
+            int newMinute = minute;
+            double hours = (double) newMinute / 60;
+            productiveHours.setText(String.valueOf(hours));
+
+        }
+        //SQLiteDatabase db = mHelper.getReadableDatabase();
+        cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_socialTime},dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null,null,null,null);
+        while(cursor.moveToNext()) {
+            int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_socialTime);
+
+            int minute = cursor.getInt(index);
+            cursor.close();
+
+            int newMinute = minute ;
+            double hours = (double) newMinute / 60;
+            socialHours.setText(String.valueOf(hours));
+        }
+
 
         plusProductive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db = mHelper.getReadableDatabase();
-                Cursor cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_productiveTime},dayInfo.dayInfoEntery.COL_date+"="+formatedDate,null,null,null,null);
+                Cursor cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_productiveTime},dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null,null,null,null);
                 while(cursor.moveToNext()){
                     int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_productiveTime);
 
@@ -94,15 +127,97 @@ public class TodayActivity extends AppCompatActivity {
                     cursor.close();
 
                     int newMinute = minute + 15 ;
-                    double hours = newMinute/60;
+                    double hours = (double)newMinute/60;
+
+
 
                     SQLiteDatabase db1 = mHelper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put(dayInfo.dayInfoEntery.COL_productiveTime,newMinute);
-                    db1.update(dayInfo.TABLE_NAME,values,dayInfo.dayInfoEntery.COL_date+"="+formatedDate,null);
+                    db1.update(dayInfo.TABLE_NAME,values,dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null);
                     productiveHours.setText(String.valueOf(hours));
                 }
 
+
+            }
+        });
+
+        minusProductive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = mHelper.getReadableDatabase();
+                Cursor cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_productiveTime},dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null,null,null,null);
+                while(cursor.moveToNext()){
+                    int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_productiveTime);
+
+                    int minute = cursor.getInt(index);
+                    cursor.close();
+
+                    int newMinute = minute - 15 ;
+                    double hours = (double)newMinute/60;
+
+
+
+                    SQLiteDatabase db1 = mHelper.getWritableDatabase();
+                    ContentValues values = new ContentValues();
+                    values.put(dayInfo.dayInfoEntery.COL_productiveTime,newMinute);
+                    db1.update(dayInfo.TABLE_NAME,values,dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null);
+                    productiveHours.setText(String.valueOf(hours));
+                }
+
+
+
+            }
+        });
+
+        plusSocial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = mHelper.getReadableDatabase();
+                Cursor cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_socialTime},dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null,null,null,null);
+                while(cursor.moveToNext()){
+                    int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_socialTime);
+
+                    int minute = cursor.getInt(index);
+                    cursor.close();
+
+                    int newMinute = minute + 15 ;
+                    double hours = (double)newMinute/60;
+
+
+
+                    SQLiteDatabase db1 = mHelper.getWritableDatabase();
+                    ContentValues values = new ContentValues();
+                    values.put(dayInfo.dayInfoEntery.COL_socialTime,newMinute);
+                    db1.update(dayInfo.TABLE_NAME,values,dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null);
+                    socialHours.setText(String.valueOf(hours));
+                }
+
+            }
+        });
+
+        minusSocial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = mHelper.getReadableDatabase();
+                Cursor cursor = db.query(dayInfo.TABLE_NAME,new String[]{dayInfo.dayInfoEntery.COL_socialTime},dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null,null,null,null);
+                while(cursor.moveToNext()){
+                    int index = cursor.getColumnIndex(dayInfo.dayInfoEntery.COL_socialTime);
+
+                    int minute = cursor.getInt(index);
+                    cursor.close();
+
+                    int newMinute = minute - 15 ;
+                    double hours = (double)newMinute/60;
+
+
+
+                    SQLiteDatabase db1 = mHelper.getWritableDatabase();
+                    ContentValues values = new ContentValues();
+                    values.put(dayInfo.dayInfoEntery.COL_socialTime,newMinute);
+                    db1.update(dayInfo.TABLE_NAME,values,dayInfo.dayInfoEntery.COL_date+"="+sant(formatedDate),null);
+                    socialHours.setText(String.valueOf(hours));
+                }
 
             }
         });
@@ -138,6 +253,7 @@ public class TodayActivity extends AppCompatActivity {
             case Calendar.WEDNESDAY:
                 return "Wednesday";
 
+
             case Calendar.THURSDAY:
                 return "Thursday";
 
@@ -158,7 +274,7 @@ public class TodayActivity extends AppCompatActivity {
     public  boolean CheckIfDataAlreadyInDBorNot(String TableName,
                                                       String dbfield, String fieldValue) {
         SQLiteDatabase sqldb = mHelper.getReadableDatabase();
-        String Query = "Select * from " + TableName + " where " + dbfield + " = " + fieldValue;
+        String Query = "Select * from " + TableName + " where " + dbfield + " = " + sant(fieldValue);
         Cursor cursor = sqldb.rawQuery(Query, null);
         if(cursor.getCount() <= 0){
             cursor.close();
@@ -168,9 +284,9 @@ public class TodayActivity extends AppCompatActivity {
         return true;
     }
 
-    public int BusyHours(String thisday) {
+    public int BusyMinutes(String thisday) {
         SQLiteDatabase db = mHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(" + activity.activityEntery.COL_duration + ") as Total FROM " + activity.TABLE_NAME + " WHERE "+ activity.activityEntery.COL_day_name + " = "+ thisday, null);
+        Cursor cursor = db.rawQuery("SELECT SUM(" + activity.activityEntery.COL_duration + ") as Total FROM " + activity.TABLE_NAME + " WHERE "+ activity.activityEntery.COL_day_name + " = "+ sant(thisday), null);
 
         if (cursor.moveToFirst()) {
 
@@ -184,6 +300,14 @@ public class TodayActivity extends AppCompatActivity {
 
 
     }
+    private String sant(String str) {
+        return DatabaseUtils.sqlEscapeString(str);
+    }
+
+    private void updateUI() {
+
+        }
+
 
 
 }
